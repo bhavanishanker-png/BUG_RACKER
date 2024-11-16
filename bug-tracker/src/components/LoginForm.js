@@ -21,7 +21,7 @@ export default function LoginForm() {
 
     // Mock validation (you can replace this with your real API response logic)
     if (email === mockCredentials.email && password === mockCredentials.password) {
-      localStorage.setItem('user', JSON.stringify({ username })); // Save user data in local storage
+      localStorage.setItem('user', JSON.stringify({ email })); // Save user data in local storage
       navigate('/dashboard'); // Navigate to the dashboard page after successful login
     } else {
       setError('Invalid credentials'); // Show error if credentials do not match
