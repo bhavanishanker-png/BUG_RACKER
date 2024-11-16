@@ -20,6 +20,7 @@ export default function LoginForm() {
 
     if (email === mockCredentials.email && password === mockCredentials.password) {
       localStorage.setItem("user", JSON.stringify({ email })); // Secure this for production
+      console.log("done")
       navigate("/dashboard");
     } else {
       setError("Invalid credentials");
