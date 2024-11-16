@@ -23,6 +23,7 @@ export default function Dashboard() {
 
     const handleLogout = () => {
         localStorage.removeItem('user');
+        toast.error('Login To Continue');
         navigate('/login'); // Redirect to login page
     };
 

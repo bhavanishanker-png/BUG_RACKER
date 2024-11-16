@@ -1,30 +1,28 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-// Adjust the path to your image
-import { loginsideimage } from '../assets/assets';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { loginsideimage } from "../assets/assets";
 
 export default function LoginForm() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const navigate = useNavigate(); // useNavigate hook for navigation
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
-    setError(''); // Reset error state on each login attempt
+    setError("");
 
     // Mock credentials
     const mockCredentials = {
-      email: 'admin@gmail.com',
-      password: 'password',
+      email: "admin@gmail.com",
+      password: "password",
     };
 
-    // Mock validation (you can replace this with your real API response logic)
     if (email === mockCredentials.email && password === mockCredentials.password) {
-      localStorage.setItem('user', JSON.stringify({ email })); // Save user data in local storage
-      navigate('/dashboard'); // Navigate to the dashboard page after successful login
+      localStorage.setItem("user", JSON.stringify({ email })); // Secure this for production
+      navigate("/dashboard");
     } else {
-      setError('Invalid credentials'); // Show error if credentials do not match
+      setError("Invalid credentials");
     }
   };
 
@@ -48,7 +46,7 @@ export default function LoginForm() {
           <form onSubmit={handleLogin} className="space-y-6">
             <div>
               <label
-                htmlFor="username"
+                htmlFor="email"
                 className="block text-sm font-medium text-gray-700"
               >
                 Email
@@ -60,6 +58,7 @@ export default function LoginForm() {
                 onChange={(e) => setEmail(e.target.value)}
                 className="mt-2 block w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                 required
+                aria-label="Enter your email"
               />
             </div>
             <div>
@@ -76,6 +75,7 @@ export default function LoginForm() {
                 onChange={(e) => setPassword(e.target.value)}
                 className="mt-2 block w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                 required
+                aria-label="Enter your password"
               />
             </div>
             {error && <p className="text-red-500 text-sm">{error}</p>}
@@ -92,7 +92,7 @@ export default function LoginForm() {
               <strong>Email:</strong> admin@gmail.com
             </p>
             <p>
-              <strong>Password:</strong>password
+              <strong>Password:</strong> password
             </p>
           </div>
         </div>
