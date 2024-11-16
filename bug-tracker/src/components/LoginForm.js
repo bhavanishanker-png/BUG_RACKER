@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { loginsideimage } from '../assets/assets';
 
 export default function LoginForm() {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate(); // useNavigate hook for navigation
@@ -15,12 +15,12 @@ export default function LoginForm() {
 
     // Mock credentials
     const mockCredentials = {
-      username: 'admin',
+      email: 'admin@gmail.com',
       password: 'password',
     };
 
     // Mock validation (you can replace this with your real API response logic)
-    if (username === mockCredentials.username && password === mockCredentials.password) {
+    if (email === mockCredentials.email && password === mockCredentials.password) {
       localStorage.setItem('user', JSON.stringify({ username })); // Save user data in local storage
       navigate('/dashboard'); // Navigate to the dashboard page after successful login
     } else {
@@ -51,13 +51,13 @@ export default function LoginForm() {
                 htmlFor="username"
                 className="block text-sm font-medium text-gray-700"
               >
-                Username
+                Email
               </label>
               <input
                 type="text"
-                id="username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="mt-2 block w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                 required
               />
@@ -89,10 +89,10 @@ export default function LoginForm() {
           <div className="mt-6 text-center text-sm text-gray-600">
             <p>Use the following credentials to log in:</p>
             <p>
-              <strong>Username:</strong> admin
+              <strong>Email:</strong> admin@gmail.com
             </p>
             <p>
-              <strong>Password:</strong> password
+              <strong>Password:</strong>password
             </p>
           </div>
         </div>
